@@ -1,0 +1,92 @@
+@import "../var";
+
+.contact-inquiry {
+    margin: 0 auto;
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: to-rem(30px);
+    }
+
+    @media screen and (max-width: $breakpoint-mobile) {
+        .grid {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+
+.__location {
+    h3 {
+        padding-bottom: to-rem(10px);
+        line-height: 1;
+    }
+    .__spot {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        padding: to-rem(20px) 0;
+        border-top: 1px solid rgba(138, 139, 140, 0.5);
+
+        &:last-child {
+            border-bottom: 1px solid rgba(138, 139, 140, 0.5);
+        }
+        .__img {
+            overflow: hidden;
+            --swiper-theme-color: #111;
+            --swiper-navigation-size: 34px;
+            --swiper-pagination-bullet-horizontal-gap: 3px;
+            --swiper-pagination-bullet-size: 6px;
+            .swiper,
+            img {
+                display: block;
+                width: 100%;
+            }
+
+            position: relative;
+        }
+        .__desc {
+            padding: 0 to-rem(25px);
+            display: flex;
+            flex-direction: column;
+            h4 {
+                font-weight: 700;
+            }
+            .__addr {
+                margin-top: auto;
+                dt {
+                    font-weight: 700;
+                    margin-bottom: .5em;
+                }
+                dd {
+                    line-height: 1.4;
+                }
+
+                a {
+                    display: inline-flex;
+                    gap: .325em;
+                    align-items: center;
+                    svg {
+                        display: block;
+                        width: to-em(18px, 20px);
+                        min-width: to-em(18px, 20px);
+                        height: to-em(18px, 20px);
+                        transition: transform 300ms;
+                    }
+                    &:hover {
+                        svg {
+                            transform: rotate(90deg);
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width: $breakpoint-mobile) {
+            grid-template-columns: 1fr;
+            grid-gap: to-rem(20px);
+            .__desc {
+                padding: 0;
+            }
+        }
+    }
+}

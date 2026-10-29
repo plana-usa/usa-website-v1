@@ -1,0 +1,79 @@
+@import "../var";
+
+
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+    background: rgba(0,0,0,.7);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+
+    transition: all 300ms;
+    &.active {
+        z-index: $header-z-index * 2;
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .modal-inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include fullsize;
+        top: 0;
+        left: 0;
+
+    }
+
+    .modal-box {
+        position: relative;
+        background: #111;
+        aspect-ratio: 16/9;
+        height: 80vh;
+        width: auto;
+        @media screen and (max-aspect-ratio : 16/9) {
+
+            width: 90vw;
+            height: auto;
+
+        }
+        .btn-close {
+            display: block;
+            position: absolute;
+            right: 0px;
+            top: -20px;
+            color: #fff;
+            font-size: to-rem(50px);
+            position: absolute;
+            transform: translateY(-100%);
+            svg {
+                display: block;
+                width: to-rem(48px);
+                height: to-rem(48px);
+            }
+        }
+
+        .video {
+            //background: #fff;
+            //padding: 2rem;
+            width: 100%;
+            height: 100%;
+            iframe {
+                display: block;
+                width: 100%;
+                height: 100%;
+
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+@import "../var";
+
+*[data-anim="lines"] {
+    .line {
+        overflow: hidden;
+        line-height: inherit;
+    }
+}

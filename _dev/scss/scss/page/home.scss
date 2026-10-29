@@ -1,0 +1,148 @@
+@import "../var";
+
+#homeParadigm {
+    z-index: 3;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    .section-inner {
+        width: 100%;
+        @media screen and (max-width: $breakpoint-mobile) {
+            br {
+                display: none;
+            }
+        }
+
+        h3 {
+            margin-bottom: .8em;
+        }
+        .__txt {
+            text-align: center;
+            max-width: $max-content-width-sm;
+            margin: 0 auto;
+        }
+
+        .__paradigm {
+            margin: to-rem(120px) auto 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: min(#{to-rem(60px)}, 4vw);
+            grid-row-gap: to-rem(40px);
+            padding: 0 to-rem(20px);
+
+            @media screen and (max-width: $breakpoint-tablet) {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: to-rem(640px);
+            }
+
+            @media screen and (max-width: $breakpoint-mobile) {
+                grid-template-columns: repeat(1, 1fr);
+                max-width: to-rem(280px);
+            }
+            .__item {
+                .__box {
+                    padding: to-rem(30px) to-rem(30px) to-rem(60px);
+                    background: #000;
+                    position: relative;
+                    box-sizing: border-box;
+                    height: 100%;
+                    display: block;
+                    transform: translate3d(0,0,0);
+                    &:before,
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        top: -1px;
+                        left: -1px;
+                        right: -1px;
+                        bottom: -1px;
+                        z-index: -2;
+                        background: #161616;
+                        transform: translate3d(0,0,0);
+                    }
+                    &:before {
+                        background: #000;
+                        z-index: -1;
+                    }
+                    &:after {
+                        background: linear-gradient(-235deg, $accent-color, rgba(0, 0, 0, 0.56), $accent-color);
+                        filter: blur(1rem);
+                        opacity: .6;
+                        transition: opacity 600ms $easeOutQuart, filter 600ms $easeOutQuart, background 600ms $easeOutQuart;
+                    }
+
+                    transition: transform 600ms $easeOutQuart;
+                    @media screen and (hover: hover) {
+                        &:hover {
+                            transform: scale(1.05);
+                            z-index: 2;
+                            &:after {
+                                opacity: .9;
+                                filter: blur(2.25rem);
+                            }
+                        }
+                    }
+                }
+
+
+                .__img {
+                    border-radius: 50%;
+                    padding: 2%;
+                    img,
+                    lottie-player {
+                        display: block;
+                        width: 64% !important;
+                        height: auto !important;
+                        aspect-ratio: 1/1;
+                        margin: 0 auto;
+                    }
+
+                }
+                .__desc {
+                    text-align: center;
+                    position: relative;
+                    padding-top: 1.25rem;
+                    &:before {
+                        display: block;
+                        margin: 0 auto to-rem(40px);
+                        content: '';
+                        width: 1.25rem;
+                        height: 1px;
+                        background: rgba(255,255,255,.65);
+                        top: 0;
+                    }
+                    h4 {
+                        line-height: 1.5;
+                        font-weight: 500;
+                        letter-spacing: 0.02em;
+                        font-size: to-rem(20px);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+#homeVideo {
+    z-index: 1;
+    .__video {
+        aspect-ratio: 16/9;
+        width: auto;
+        max-width: 100%;
+        max-height: calc( 100vh - 180px );
+        transform-origin: 50% 0%;
+        position: relative;
+        margin: 0 auto;
+    }
+    img,
+    video {
+        @include fullsize;
+        object-fit: cover;
+        margin: auto;
+        display: block;
+
+
+    }
+}
+

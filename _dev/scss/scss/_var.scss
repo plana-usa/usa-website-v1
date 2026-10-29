@@ -1,0 +1,163 @@
+@use "sass:math";
+
+$color-red: #ED1C24;
+
+
+$font-family :  'DC Air Sans', -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Spoqa Han Sans Neo", "Malgun Gothic", sans-serif;
+$font-family-akzidenz: 'Akzidenz-Grotesk Pro', $font-family;
+$font-color : #fff;
+$bg-color: #000;
+$font-size: 16px;
+$default-width: 1920px;
+$default-height: 1080px;
+
+$default-tablet-width: 768px;
+$default-mobile-width: 375px;
+
+$gutter: 46px;
+$gutter-m: 24px;
+$header-z-index: 999;
+$screen-content-width: 1680px;
+$max-content-width: 1440px;
+$max-content-width-sm: 1180px;
+$breakpoint-tablet: 1023px;
+$breakpoint-mobile: 767px;
+$breakpoint-min: 540px;
+
+
+$accent-color: #ee2737;
+//mixin
+@mixin pos-x() {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@mixin pos-y() {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@mixin pos-xy() {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+@mixin fullsize() {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@mixin flex-ac() {
+    display: flex;
+    align-items: center;
+}
+
+@mixin flex-ac-jc() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@function to-em($value, $base) {
+    @return math.div($value, $base) * 1em;
+}
+@function to-rem($value) {
+    @return math.div($value, $font-size) * 1rem;
+}
+
+@function to-per($value, $base) {
+    @return math.div($value, $base) * 100%;
+}
+
+
+@function to-vw($value, $base : $default-width) {
+    @return math.div($value, $base) * 100vw;
+}
+
+@function to-vh($value, $base) {
+    @return math.div($value, $base) * 100vh;
+}
+
+
+
+@function to-vmin($value, $base) {
+    @return math.div($value, $base) * 100vmin;
+}
+
+
+
+$calc-gutter: clamp(#{$gutter-m}, #{to-vw($gutter, $default-width)}, #{to-rem($gutter)});
+
+
+@mixin ellipsis($line) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+    word-wrap:break-word;
+}
+
+
+@mixin calc-clamp($min, $max, $what: 'font-size') {
+    #{$what}: clamp(#{$min}, #{to-vw($max, $screen-content-width)}, #{to-rem($max)})
+}
+
+
+//easing
+
+$easeInSine: cubic-bezier(0.47, 0, 0.745, 0.715);
+$easeOutSine: cubic-bezier(0.39, 0.575, 0.565, 1);
+$easeInOutSine: cubic-bezier(0.39, 0.575, 0.565, 1);
+
+$easeInQuad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+$easeOutQuad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$easeInOutQuad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+$easeInCubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$easeOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+$easeInOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+$easeInQuart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+$easeOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
+$easeInOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
+
+$easeInQuint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+$easeOutQuint: cubic-bezier(0.23, 1, 0.32, 1);
+$easeInOutQuint: cubic-bezier(0.23, 1, 0.32, 1);
+
+$easeInExpo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+$easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
+$easeInOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
+
+$easeInCirc: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+$easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
+$easeInOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+$easeInBack: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+$easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+$easeInOutFast: cubic-bezier(1,0,0,1);
+
+$authenticMotion: cubic-bezier(.4,0,.2,1);
+
+
+@mixin __container() {
+    padding: 0 $calc-gutter;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+
+}
+

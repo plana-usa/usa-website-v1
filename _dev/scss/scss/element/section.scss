@@ -1,0 +1,139 @@
+@import "../var";
+
+
+.section {
+    position: relative;
+    z-index: 2;
+    background: #000;
+    &.hide {
+        opacity: 0;
+        visibility: hidden;
+    }
+    &.full-height {
+        height: 100vh;
+        .section-inner {
+            height: 100vh;
+            position: relative;
+
+        }
+    }
+
+    .section-inner {
+        .centered-content {
+            width: 100%;
+            @include pos-y;
+            text-align: center;
+
+        }
+        .bottom-content {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            bottom: max(50px, #{to-vw(80px)});
+            text-align: center;
+        }
+    }
+
+    &[data-theme="light"] {
+        background: #fff;
+        color: #111;
+    }
+
+}
+
+.section-kv {
+    overflow: hidden;
+    backface-visibility: hidden;
+    .kv {
+        @include fullsize;
+        backface-visibility: hidden;
+        z-index: 1;
+        //opacity: .625;
+        //.__dimmed {
+        //    display: block;
+        //    top: 0;
+        //    left: 0;
+        //    @include fullsize;
+        //    background: rgba(0, 0, 0, .5);
+        //    z-index: 2;
+        //    transform: scale(1.5);
+        //}
+        .img,
+        video,
+        img {
+            display: block;
+            @include fullsize;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: #000 50% 50% no-repeat;
+            background-size: cover;
+            transform: translate3d(0,0,0);
+        }
+        .slider {
+            @include fullsize;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            background: #000;
+            backface-visibility: hidden;
+        }
+    }
+
+    .section-content {
+        opacity: 0;
+        position: relative;
+        z-index: 2;
+    }
+
+    &.loaded {
+        .section-content {
+            opacity: 1;
+        }
+    }
+
+    .__title {
+        //overflow: hidden;
+
+    }
+    .__sub-title {
+        margin-top: 1em;
+    }
+
+    .__sentence {
+        overflow: hidden;
+        @media screen and (max-width: $breakpoint-mobile) {
+            display: block;
+        }
+    }
+
+    .__cta {
+        margin-top: to-rem(60px);
+        display: flex;
+        justify-content: center;
+    }
+
+}
+
+
+.section-fixed-kv {
+    min-height: 100vh;
+    overflow: hidden;
+    padding-top: 100vh;
+    margin-top: -100vh;
+    z-index: 1;
+    .fixed-kv {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100vh;
+        .kv,
+        .img {
+            @include fullsize;
+            background: 50% 50% no-repeat;
+            background-size: cover;
+        }
+    }
+}

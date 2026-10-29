@@ -1,0 +1,150 @@
+@import "../var";
+
+input,
+textarea,
+select {
+    font-family: inherit;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.form-input {
+    @include calc-clamp(16px, 18px);
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 0;
+    line-height: 1.325;
+    height: 2.8em;
+    padding: 0 1em;
+    background: transparent;
+    color: #fff;
+}
+
+
+textarea.form-input {
+    padding: 1em;
+    min-height: 10em;
+}
+
+.form-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: to-rem(12px);
+    @media screen and (max-width: $breakpoint-mobile) {
+        grid-template-columns: 1fr;
+        grid-gap: 0;
+    }
+}
+.form-block {
+    margin-bottom: to-rem(20px);
+    .form-label {
+        display: flex;
+        @include calc-clamp(16px, 18px);
+        margin-bottom: to-em(10px, 18px);
+        .required {
+            color: #ff0000;
+        }
+        .msg {
+            margin-left: auto;
+            font-size: to-rem(10px);
+            color: #999999;
+        }
+    }
+}
+
+.radio-box {
+    position: relative;
+    input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+    }
+    .label {
+        display: block;
+        border-radius: 2em;
+        font-size: to-rem(12px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        padding: .8em 1em;
+        
+    }
+    
+    input:checked+.label {
+        background-color: #000;
+        border-color: #000;
+        color: #fff;
+    }
+}
+
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: to-rem(8px);
+    gap: to-rem(8px);
+
+}
+
+.fileupload {
+    position: relative;
+    input[type="file"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+    }
+}
+
+.form-action {
+    display: flex;
+    gap: to-rem(10px);
+    margin-top: to-rem(30px);
+    button {
+        min-width: to-rem(200px);
+    }
+}
+
+.agree-box {
+
+    margin-bottom: to-rem(24px);
+    h5 {
+        font-weight: 700;
+        margin-bottom: to-em(10px, 18px);
+        @include calc-clamp(16px, 18px);
+    }
+    .__doc {
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        margin-bottom: .8em;
+        .__doc-inner {
+            padding: 1em;
+            @include calc-clamp(14px, 16px);
+            line-height: 1.5;
+        }
+    }
+    .check-box {
+        display: flex;
+        align-items: center;
+        a {
+            display: inline-block;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+    }
+    input[type="checkbox"] {
+        padding: 0;
+        margin: 0;
+        width: 1.2rem;
+        height: 1.2rem;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        background: transparent;
+        margin-right: to-em(10px, 14px);
+        opacity: .8;
+
+        &:checked {
+            opacity: 1;
+            background: #fff;
+            box-shadow: inset 0 0 0 .36em #000;
+        }
+    }
+}

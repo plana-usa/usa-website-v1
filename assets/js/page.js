@@ -1,0 +1,10 @@
+
+(()=>{
+    window.initPage = () => {
+
+    }
+
+    window.startPage = () => {
+
+    }
+})();

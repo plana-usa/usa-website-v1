@@ -1,0 +1,162 @@
+@import "../var";
+
+html {
+    background: $bg-color;
+}
+
+.__PLANA__ {
+    overflow: hidden;
+}
+
+.loading {
+    .__PLANA__ {
+        opacity: 0;
+    }
+}
+
+
+.container {
+    @include __container;
+    .__inner {
+        max-width: $max-content-width;
+        margin: 0 auto;
+    }
+    .__inner-sm {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+    .__inner-lg {
+        max-width: $screen-content-width;
+        margin: 0 auto;
+    }
+}
+
+#main {
+    min-height: 100vh;
+}
+
+.section {
+    position: relative;
+
+
+    &.hidden {
+        //visibility: hidden;
+    }
+    .section-inner {
+        position: relative;
+    }
+}
+
+
+
+@for $i from 0 through 400 {
+    .pt-#{$i * 2} {
+        padding-top: to-rem($i * 2px);
+    }
+    .pb-#{$i * 2} {
+        padding-bottom: to-rem($i * 2px);
+    }
+    .mt-#{$i * 2} {
+        margin-top: to-rem($i * 2px);
+    }
+    .mb-#{$i * 2} {
+        margin-bottom: to-rem($i * 2px);
+    }
+}
+
+@media screen and (max-width: $breakpoint-tablet) {
+    @for $i from 0 through 400 {
+        .pt-#{$i * 2}--t {
+            padding-top: to-rem($i * 2px);
+        }
+        .pb-#{$i * 2}--t {
+            padding-bottom: to-rem($i * 2px);
+        }
+        .mt-#{$i * 2}--t {
+            margin-top: to-rem($i * 2px);
+        }
+        .mb-#{$i * 2}--t {
+            margin-bottom: to-rem($i * 2px);
+        }
+    }
+}
+
+
+@media screen and (max-width: $breakpoint-mobile) {
+    @for $i from 0 through 400 {
+        .pt-#{$i * 2}--m {
+            padding-top: to-rem($i * 2px);
+        }
+        .pb-#{$i * 2}--m {
+            padding-bottom: to-rem($i * 2px);
+        }
+        .mt-#{$i * 2}--m {
+            margin-top: to-rem($i * 2px);
+        }
+        .mb-#{$i * 2}--m {
+            margin-bottom: to-rem($i * 2px);
+        }
+    }
+}
+
+
+#loading {
+    @include fullsize;
+    position: fixed;
+    z-index: -1;
+    visibility: hidden;
+    opacity: 0;
+    background: #080808;
+    overflow: hidden;
+    .__inner {
+        @include fullsize;
+    }
+    .__txt {
+        font-size: clamp(1.6rem, 4.6vw, 4.4rem);
+        line-height: 1.4;
+        @include pos-xy;
+        display: flex;
+        align-items: center;
+        opacity: 0;
+    }
+    span {
+        overflow: hidden;
+        display: block;
+    }
+    i {
+        margin-left: .5em;
+        display: block;
+        img {
+            display: block;
+            width: 1em;
+            height: auto;
+        }
+    }
+}
+
+body.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    #loading {
+        z-index: 999999;
+        visibility: visible;
+        opacity: 1;
+
+    }
+}
+
+
+@media screen and (min-width: $breakpoint-tablet) {
+    .hide-when-tablet {
+        display: none;
+    }
+}
+
+@media screen and (min-width: $breakpoint-mobile) {
+    .hide-when-mobile {
+        display: none;
+    }
+}

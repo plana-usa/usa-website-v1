@@ -1,0 +1,17 @@
+# Raw HTTrack mirror — keep in "Downloaded Copy From Web", never in the repo
+plana.aero/
+plana.aero.zip
+*.whtt
+hts-cache/
+hts-log.txt
+
+# OS / editor noise
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+*.tmp
+~$*
+
+# Netlify local state (if the CLI is ever used)
+.netlify/
