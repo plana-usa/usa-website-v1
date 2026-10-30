@@ -315,3 +315,192 @@
         }
     }
 }
+
+/* CP-01 benefits row (hero tier) vs. spec row — added 2026-10-29 */
+.__product-features.__hero-features {
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 2.5rem 0 2rem;
+  margin-bottom: 2.5rem;
+}
+.__product-features.__hero-features dl {
+  padding: 0 2rem;
+  border-right-color: rgba(0, 0, 0, 0.2);
+}
+.__product-features.__hero-features dl dt {
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0.7;
+  margin-bottom: 1.1em;
+}
+.__product-features.__hero-features dl dd strong {
+  font-family: "DC Air Sans", "Akzidenz-Grotesk Pro", sans-serif;
+  font-size: clamp(28px, 2.6vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #ee2737;
+  letter-spacing: 0.01em;
+}
+.__product-features.__hero-features dl dd small {
+  font-size: 0.9375rem;
+  margin-top: 0.9em;
+  opacity: 0.8;
+  line-height: 1.3;
+}
+.__product-features.__spec-features dl dt {
+  opacity: 0.6;
+}
+.__product-features.__spec-features dl dd strong {
+  font-size: 1.0625rem;
+}
+@media screen and (max-width: 767px) {
+  .__product-features.__hero-features dl {
+    width: 100%;
+    border-right: 0;
+    padding: 1rem 0;
+  }
+}
+
+/* Noise tooltip (67 dBA) — added 2026-10-29 */
+.__product-features.__spec-features {
+  position: relative;
+  z-index: 20;
+}
+.__product-features .__has-tip {
+  position: relative;
+  z-index: 21;
+}
+.__tip-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.1em;
+  height: 1.1em;
+  margin-left: 0.3em;
+  border: 1.5px solid #ee2737;
+  border-radius: 50%;
+  background: #fff;
+  color: #ee2737;
+  font: 700 0.62em/1 "Akzidenz-Grotesk Pro", sans-serif;
+  vertical-align: 0.15em;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, color 0.2s;
+}
+.__has-tip:hover .__tip-btn,
+.__tip-btn:focus-visible,
+.__tip-open .__tip-btn {
+  background: #ee2737;
+  color: #fff;
+}
+.__tip-pop {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22rem;
+  max-width: calc(100vw - 2rem);
+  background: #fff;
+  color: #111;
+  text-align: left;
+  border-radius: 6px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  padding: 1.25rem 1.375rem 1.125rem;
+  z-index: 50;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 6px;
+  transition: opacity 0.25s, translate 0.25s, visibility 0.25s;
+}
+.__tip-pop:before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  transform: translateX(-50%) rotate(45deg);
+  box-shadow: -1px -1px 0 rgba(0, 0, 0, 0.06);
+}
+@media (hover: hover) {
+  .__has-tip:hover .__tip-pop,
+  .__tip-btn:focus-visible + .__tip-pop {
+    opacity: 1;
+    visibility: visible;
+    translate: 0 0;
+  }
+}
+.__tip-open .__tip-pop {
+  opacity: 1;
+  visibility: visible;
+  translate: 0 0;
+}
+.__tip-pop h5 {
+  font-family: "DC Air Sans", sans-serif;
+  font-weight: 400;
+  font-size: 1.0625rem;
+  margin: 0 0 0.6em;
+  color: #ee2737;
+}
+.__tip-pop p {
+  margin: 0 0 0.75em;
+  font-weight: 400;
+}
+.__tip-pop .__lead {
+  margin-bottom: 0.35em;
+  font-weight: 500;
+}
+.__tip-pop ul {
+  margin: 0 0 0.9em;
+  padding-left: 1.1em;
+}
+.__tip-pop li {
+  margin: 0.15em 0;
+  font-weight: 400;
+}
+.__tip-pop .__heli {
+  margin: 0;
+  padding-top: 0.75em;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.__tip-pop .__heli strong {
+  color: #ee2737;
+  display: inline;
+  font-size: inherit;
+}
+@media screen and (max-width: 767px) {
+  .__has-tip {
+    position: static;
+  }
+  .__tip-pop {
+    position: fixed;
+    top: auto;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+    max-width: none;
+    transform: none;
+  }
+  .__tip-pop:before {
+    display: none;
+  }
+}
+
+/* Differentiation card footnote — added 2026-10-29 */
+.__differentiations article ul li.__fn {
+  opacity: 0.55;
+  font-size: 0.8em;
+  margin-top: 0.6em;
+}
+
+/* Diagram images: block display removes the inline baseline gap below the image — added 2026-10-30 */
+.__differentiations article.__diagram .__img img {
+  display: block;
+  width: 100%;
+}

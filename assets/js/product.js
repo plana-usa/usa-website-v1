@@ -137,3 +137,19 @@
 
     }
 })();
+
+// Noise tooltip (67 dBA): tap/click toggles, outside tap or Esc closes — added 2026-10-29
+const initNoiseTip = () => {
+    const btn = document.querySelector('.__tip-btn');
+    if (!btn) return;
+    const dl = btn.closest('.__has-tip');
+    const close = () => { dl.classList.remove('__tip-open'); btn.setAttribute('aria-expanded', 'false'); };
+    btn.addEventListener('click', (e) => {
+        e.preventDefault(); e.stopPropagation();
+        const open = dl.classList.toggle('__tip-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', (e) => { if (!dl.contains(e.target)) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+};
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initNoiseTip); else initNoiseTip();
