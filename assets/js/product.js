@@ -170,3 +170,24 @@ const initMilitaryToggle = () => {
     });
 };
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initMilitaryToggle); else initMilitaryToggle();
+
+// Leveraging Legacy Infrastructure band: letter-by-letter headline + centre-out wipe on the chart — added 2026-10-30
+const initInfraBand = () => {
+    const band = document.getElementById('infraBand');
+    if (!band || !window.gsap || !window.SplitText) return;
+    const title = band.querySelector('.__infra-title');
+    const chart = band.querySelector('.__infra-chart');
+    const img = chart.querySelector('img');
+    const split = new SplitText(title, {type: 'words,chars'});
+    gsap.set(split.chars, {y: '0.6em', autoAlpha: 0, rotateX: -60, transformOrigin: '50% 100%'});
+    gsap.set(title, {perspective: 600});
+    gsap.set(chart, {clipPath: 'inset(0 50% 0 50%)'});
+    gsap.set(img, {scale: 1.08, autoAlpha: 0});
+    gsap.timeline({
+        scrollTrigger: {trigger: band, start: 'top 75%', end: 'top -100000%'}
+    })
+        .to(split.chars, {y: '0em', autoAlpha: 1, rotateX: 0, duration: 0.9, ease: 'back.out(1.6)', stagger: 0.025}, 0)
+        .fromTo(chart, {clipPath: 'inset(0% 50% 0% 50%)'}, {clipPath: 'inset(0% 0% 0% 0%)', duration: 1.5, ease: 'expo.out'}, 0.45)
+        .to(img, {scale: 1, autoAlpha: 1, duration: 1.6, ease: 'expo.out'}, 0.45);
+};
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initInfraBand); else initInfraBand();

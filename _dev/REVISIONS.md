@@ -20,3 +20,9 @@
 - Each use-case card (Passenger, Logistics, EMS & Special Mission) gets a flag pill ("Military & Tactical") bottom-right of the image; click/tap crossfades to the military image and back (`article.__military`, `aria-pressed`). Wired into both the desktop image and the phone-layout copy.
 - Images: `assets/img/product/uc1-military.jpg` (marine seating), `uc2-military.jpg` (military cargo), `uc3-military.jpg` (medevac); originals in `_dev/src-img/`.
 - CSS appended to `app.css` + `product.scss`; JS appended to `product.js` (`initMilitaryToggle`).
+
+## 2026-10-30 — Batch 4: Product › vs battery eVTOL section
+- "Safest battery SOC operation" row → heading "eVTOLs don't have a design problem" / sub "They have a physics problem", graphic replaced by `assets/img/product/energy-at-the-shaft.jpg`.
+- "Low maintenance cost" row removed (chart `diff-diagram3.png` left in assets, unused).
+- "Leverage existing infrastructure" row replaced by full-bleed white band `#infraBand`: centred heading "Leveraging Legacy Infrastructure" + `infrastructure-chart.jpg` capped at 1440px; entrance animation (SplitText letter flip + centre-out clip-path wipe) in `product.js` (`initInfraBand`).
+- Originals in `_dev/src-img/`.

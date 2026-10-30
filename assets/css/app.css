@@ -20068,3 +20068,35 @@ button {
     display: none;
   }
 }
+
+/* Leveraging Legacy Infrastructure band — full-bleed white, content capped at 1440px — added 2026-10-30 */
+.__infra-band {
+  background: #fff;
+  color: #000;
+  text-align: center;
+  padding: 6rem 0 5rem;
+}
+.__infra-band .__infra-title {
+  color: #000;
+  margin: 0 auto 3rem;
+}
+.__infra-band .__infra-title:after {
+  display: none;
+}
+.__infra-band .__infra-chart {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.__infra-band .__infra-chart img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media screen and (max-width: 767px) {
+  .__infra-band {
+    padding: 4rem 0 3rem;
+  }
+  .__infra-band .__infra-title {
+    margin-bottom: 2rem;
+  }
+}
