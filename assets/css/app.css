@@ -19995,3 +19995,76 @@ button {
   display: block;
   width: 100%;
 }
+
+/* Use-case cards: civilian / military image toggle — added 2026-10-30 */
+.__use-cases article .__img,
+.__use-cases article .__desc .__img-m {
+  position: relative;
+}
+.__use-cases article .__desc .__img-m {
+  display: none;
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+.__use-cases article .__desc .__img-m img {
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+}
+.__use-cases article img.__mil {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+.__use-cases article.__military img.__mil {
+  opacity: 1;
+}
+.__flag-btn {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.45em 0.9em 0.45em 0.5em;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 2em;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font: 500 0.75rem/1 "Akzidenz-Grotesk Pro", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, color 0.25s;
+}
+.__flag-btn svg {
+  width: 1.9em;
+  height: 1em;
+  display: block;
+  border-radius: 2px;
+}
+.__flag-btn:hover,
+.__flag-btn:focus-visible {
+  background: rgba(0, 0, 0, 0.7);
+  border-color: #fff;
+}
+.__use-cases article.__military .__flag-btn {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+@media screen and (max-width: 767px) {
+  .__use-cases article .__desc .__img-m {
+    display: block;
+  }
+  .__use-cases article .__desc .__txt > img {
+    display: none;
+  }
+}

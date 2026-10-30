@@ -153,3 +153,20 @@ const initNoiseTip = () => {
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
 };
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initNoiseTip); else initNoiseTip();
+
+// Use-case cards: flag button toggles civilian / military image — added 2026-10-30
+const initMilitaryToggle = () => {
+    document.querySelectorAll('.__use-cases article').forEach((article) => {
+        const buttons = article.querySelectorAll('.__flag-btn');
+        if (!buttons.length) return;
+        buttons.forEach((btn) => btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const on = article.classList.toggle('__military');
+            buttons.forEach((b) => {
+                b.setAttribute('aria-pressed', on ? 'true' : 'false');
+                b.setAttribute('aria-label', on ? 'Show the civilian configuration' : 'Show the military and tactical configuration');
+            });
+        }));
+    });
+};
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initMilitaryToggle); else initMilitaryToggle();

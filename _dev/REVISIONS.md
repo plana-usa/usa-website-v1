@@ -15,3 +15,8 @@
 - Product › vs battery eVTOL: "Highly enhanced flight range" → "3x Faster Door-to-Door" with SoCal route map; new row "Faster Than Flying Private" with NorCal map (image left); remaining rows re-alternated. Fixed inline-image gap under diagram images.
 - Assets: web copies in `assets/img/product/` (socal-/nocal-route-map.jpg, 2000px); originals in `_dev/src-img/`.
 - CSS/JS: additions at the end of `assets/css/app.css` + `_dev/scss/scss/page/product.scss`; tooltip logic appended to `assets/js/product.js`.
+
+## 2026-10-30 — Batch 3: Military / Tactical toggle (Product › use cases)
+- Each use-case card (Passenger, Logistics, EMS & Special Mission) gets a flag pill ("Military & Tactical") bottom-right of the image; click/tap crossfades to the military image and back (`article.__military`, `aria-pressed`). Wired into both the desktop image and the phone-layout copy.
+- Images: `assets/img/product/uc1-military.jpg` (marine seating), `uc2-military.jpg` (military cargo), `uc3-military.jpg` (medevac); originals in `_dev/src-img/`.
+- CSS appended to `app.css` + `product.scss`; JS appended to `product.js` (`initMilitaryToggle`).
